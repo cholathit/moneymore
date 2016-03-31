@@ -10,7 +10,7 @@
       </ion-nav-buttons>
 
       <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-plus-round white"
+        <button class="button button-icon button-clear ion-plus-round"
                 ng-click="dashboardCtrl.toggleRight()">
         </button>
       </ion-nav-buttons>
@@ -47,6 +47,9 @@
         </ion-item>
         <ion-item menu-close ui-sref="app.setting">
           Settings
+        </ion-item>
+        <ion-item menu-close ui-sref="app.logout">
+          Logout
         </ion-item>
       </ion-list>
     </ion-content>
