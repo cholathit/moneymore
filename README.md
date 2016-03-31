@@ -1,6 +1,7 @@
 Moneymore App Ionic Base
-=====================
+========================
 Ionic Version: 1.2.4-nightly-1917
+
 AngularJS Version: 1.5.0
 
 ## Using this project
@@ -11,4 +12,4 @@ For example, to start a new Ionic project with the default tabs interface, make 
 ```bash
 $ npm install -g ionic
 
-Don't forget to run npm install, bower install, and gu
+Don't forget to run npm install, bower install, and gulp
