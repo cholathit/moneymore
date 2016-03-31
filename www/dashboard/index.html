@@ -1,0 +1,56 @@
+
+<!--<md-toolbar class="md-primary">-->
+  <!--<div class="md-toolbar-tools container">-->
+    <!--<h2 class="text-muted white-font">-->
+      <!--<div ui-sref="app.app.dashboard">-->
+      <!--<span>moneymore</span>-->
+      <!--</div>-->
+    <!--</h2>-->
+    <!--<span flex></span>-->
+    <!--<md-button-->
+      <!--aria-label="Profile"-->
+      <!--ui-sref="app.app.profile">-->
+      <!--<img ng-src="{{dashboardCtrl.profile.profile_image}}" width="50px">-->
+    <!--</md-button>-->
+    <!--<h2 class="text-muted white-font">-->
+    <!--<md-input-container md-no-float>-->
+      <!--<label ng-if="!dashboardCtrl.profile.lang">Language</label>-->
+      <!--<label ng-if="dashboardCtrl.profile.lang">{{dashboardCtrl.profile.lang}}</label>-->
+      <!--<md-select ng-model="ctrl.userState" class="md-fab md-mini" aria-label="Languages">-->
+        <!--<md-option ng-click="dashboardCtrl.toggleLang('Eng')">Eng</md-option>-->
+        <!--<md-option ng-click="dashboardCtrl.toggleLang('ไทย')">ไทย</md-option>-->
+      <!--</md-select>-->
+    <!--</md-input-container>-->
+    <!--</h2>-->
+
+
+    <!--<md-button ui-sref="app.app.logout" class="md-primary md-fab md-mini" aria-label="Log out">-->
+      <!--<i class="ion-log-out"></i>-->
+    <!--</md-button>-->
+  <!--</div>-->
+
+<!--</md-toolbar>-->
+
+<!--<div-->
+      <!--class="animated slideInRight md-margin"-->
+      <!--ng-include="dashboardCtrl.view">-->
+<!--</div>-->
+
+<!--<ion-nav-bar type="bar-calm">-->
+
+<!--</ion-nav-bar>-->
+
+<ion-view view-title="Moneymore">
+
+  <ion-content class="has-header">
+
+    <div
+    ng-include="dashboardCtrl.view">
+    </div>
+
+    <div class="text-center">
+    {{dashboardCtrl.location.city}}
+    </div>
+
+  </ion-content>
+</ion-view>

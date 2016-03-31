@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Moneymore.xyz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+
+
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/angular-chart.js/dist/angular-chart.css">
+    <link rel="stylesheet" href="styles/jumbotron-narrow.css">
+    <link rel="stylesheet" href="styles/animate.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+
+  <body ng-app="App">
+    <!--<ion-nav-bar>-->
+      <!--<ion-nav-back-button>-->
+      <!--</ion-nav-back-button>-->
+    <!--</ion-nav-bar>-->
+    <!--<ion-nav-view class="menuContent">-->
+      <!--&lt;!&ndash;<ion-nav-bar>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<ion-nav-back-button>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;</ion-nav-back-button>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;</ion-nav-bar>&ndash;&gt;-->
+
+    <!--</ion-nav-view>-->
+    <ion-nav-bar class="bar-mm">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-plus-round"
+                ng-click="dashboardCtrl.toggleRight()">
+        </button>
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+    <ion-nav-view class="background"></ion-nav-view>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-75026827-1');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angularfire/dist/angularfire.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/angular-md5/angular-md5.js"></script>
+    <script src="lib/Chart.js/Chart.js"></script>
+    <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="lib/angular-date-dropdowns/directive.js"></script>
+    <!-- <script src="lib/angular-animate/angular-animate.js"></script> -->
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/flow.js/dist/flow.js"></script>
+    <script src="lib/ng-flow/dist/ng-flow.js"></script>
+    <script src="lib/tether/dist/js/tether.js"></script>
+    <script src="lib/angular-toArrayFilter/toArrayFilter.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="js/directives.js"></script>
+    <script src="lang/lang.js"></script>
+    <script src="auth/auth.controller.js"></script>
+    <script src="auth/auth.service.js"></script>
+    <script src="users/users.service.js"></script>
+    <script src="users/profile.controller.js"></script>
+    <script src="factory/factory.service.js"></script>
+    <script src="creditcard/creditcard.controller.js"></script>
+    <script src="creditcard/creditcard.service.js"></script>
+    <script src="goal/goal.controller.js"></script>
+    <script src="goal/goal.service.js"></script>
+    <script src="spendable/spendable.controller.js"></script>
+    <script src="dashboard/dashboard.controller.js"></script>
+    <script src="dashboard/dashboard.service.js"></script>
+    <script src="transaction/transaction.controller.js"></script>
+    <script src="transaction/transaction.service.js"></script>
+    <script src="bill/bill.controller.js"></script>
+    <script src="bill/bill.service.js"></script>
+    <!-- endbuild -->
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+  </body>
+</html>

@@ -1,0 +1,293 @@
+<!--
+Dashboard template
+-->
+<md-grid-list style="width:95%;"
+  class="container md-padding"
+  md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+  md-row-height-gt-md="1:1"
+  md-row-height="1:1"
+  md-gutter="12px" md-gutter-sm="-20px"
+  md-gutter-gt-sm="8px" >
+
+
+  <!-- Spendable -->
+  <md-grid-tile class="white-bg"  md-rowspan="2" md-colspan="2" md-colspan-sm="1"
+                md-rowspan-sm="0"
+                ui-sref="app.spendable">
+    <md-grid-tile-header>
+      <h3>{{ 'KEY_SPENDABLE' | translate }}</h3>
+    </md-grid-tile-header>
+    <daily-spendable-dough></daily-spendable-dough>
+  </md-grid-tile>
+
+
+  <!-- Goal -->
+  <md-grid-tile class="white-bg" md-rowspan="2" md-colspan="2" md-colspan-sm="1"
+                md-rowspan-sm="0"
+                ui-sref="app.goal">
+    <md-grid-tile-header>
+      <h3>{{ 'KEY_GOAL' | translate }}</h3>
+    </md-grid-tile-header>
+    <md-content flex class="md-padding">
+      <goal-dashboard></goal-dashboard>
+    </md-content>
+  </md-grid-tile>
+
+
+  <!-- Overview -->
+  <md-grid-tile class="white-bg" md-rowspan-sm="0"
+                md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+
+    <md-grid-tile-header>
+      <div flex>
+        <h3>{{ 'KEY_TRANSACTION' | translate }}</h3>
+      </div>
+    </md-grid-tile-header>
+
+    <div layout="column">
+      <!--Dummy interface-->
+      <div flex="column" ui-sref="app.creditcard">
+        <h1 class="text-center">
+          <i class="ion-card"></i>
+          <br>
+          <small class="text-muted">no cards yet</small>
+        </h1>
+      </div>
+
+      <div flex="">
+        <md-grid-tile-header>
+          <h3>{{ 'KEY_BILL' | translate }}</h3>
+        </md-grid-tile-header>
+        <h1 class="text-center">
+          <i class="ion-ios-list-outline"></i>
+          <br>
+          <small class="text-muted">no bills yet</small>
+        </h1>
+      </div>
+    </div>
+    <!--<div ng-include="dashboardCtrl.addTransaction_view"></div>-->
+  </md-grid-tile>
+
+
+  <!-- Spending -->
+  <md-grid-tile class="white-bg" md-rowspan-sm="0"
+                md-rowspan="2" md-colspan="2" md-colspan-sm="1"
+                ui-sref="app.spending">
+    <md-grid-tile-header class="white-bg">
+      <h3>{{ 'KEY_SPENDING' | translate }}</h3>
+    </md-grid-tile-header>
+    <transaction-trend></transaction-trend>
+  </md-grid-tile>
+
+
+  <!-- Creditcard -->
+  <md-grid-tile class="white-bg"  md-rowspan="2" md-colspan="2" md-colspan-sm="1"
+                md-rowspan-sm="0" ui-sref="app.creditcard">
+    <md-grid-tile-header>
+      <h3>{{ 'KEY_CREDITCARD' | translate }}</h3>
+    </md-grid-tile-header>
+    <creditcard-dashboard></creditcard-dashboard>
+  </md-grid-tile>
+
+
+  <!-- Bills -->
+  <md-grid-tile class="white-bg" md-rowspan="2" md-colspan="2" md-colspan-sm="1"
+                md-rowspan-sm="0" ui-sref="app.bill">
+    <md-grid-tile-header>
+      <h3>{{ 'KEY_BILL' | translate }}</h3>
+    </md-grid-tile-header>
+    <bill-dashboard></bill-dashboard>
+  </md-grid-tile>
+
+
+  <!-- Setting -->
+  <md-grid-tile class="white-bg" md-rowspan="2" md-colspan="2" md-colspan-sm="1"
+                md-rowspan-sm="0" ui-sref="app.profile">
+    <md-grid-tile-header>
+      <h3>{{ 'KEY_SETTING' | translate }}</h3>
+    </md-grid-tile-header>
+
+    <h2 class="text-center">
+
+      <img
+        ng-if="dashboardCtrl.profile.profile_image"
+        class="img-responsive"
+        style="max-width:200px"
+        ng-src="{{dashboardCtrl.profile.profile_image}}" />
+
+
+      <!--<i  nf-if="!dashboardCtrl.profile.profile_image"
+          class="material-icons md-48">settings</i>-->
+      <small class="text-muted">{{ 'KEY_SETTING' | translate }}</small>
+    </h2>
+  </md-grid-tile>
+
+</md-grid-list>
+
+
+<!--<md-content show-sm="" hide-gt-sm="">-->
+  <!--<md-list>-->
+    <!--<md-list-item class="md-3-line">-->
+      <!--<div ui-sref="app.spendable">-->
+        <!--<daily-spendable-dough></daily-spendable-dough>-->
+      <!--</div>-->
+    <!--</md-list-item>-->
+    <!--<md-divider></md-divider>-->
+
+    <!--<md-list-item class="md-3-line md-padding ">-->
+
+      <!--<div ui-sref="app.goal">-->
+        <!--<goal-dashboard></goal-dashboard>-->
+      <!--</div>-->
+    <!--</md-list-item>-->
+    <!--<md-divider></md-divider>-->
+
+    <!--<md-list-item class="md-3-line">Spending</md-list-item>-->
+    <!--<md-divider></md-divider>-->
+
+    <!--<md-list-item class="md-3-line">-->
+      <!--<md-button class="md-fab" aria-label="Credit Card">-->
+        <!--<md-icon class="material-icons md-24">credit_card</md-icon>-->
+        <!--<creditcard-dashboard></creditcard-dashboard>-->
+      <!--</md-button>-->
+    <!--</md-list-item>-->
+    <!--<md-divider></md-divider>-->
+
+    <!--&lt;!&ndash; BIll &ndash;&gt;-->
+    <!--<md-list-item class="md-3-line" style="background: #0b97c4;">-->
+      <!--<div ui-sref="app.bill">-->
+        <!--<bill-dashboard></bill-dashboard>-->
+      <!--</div>-->
+    <!--</md-list-item>-->
+
+
+    <!--<md-list-item class="md-3-line">Setting</md-list-item>-->
+    <!--<md-divider></md-divider>-->
+
+  <!--</md-list>-->
+<!--</md-content>-->
+
+
+
+<!--<md-grid-list-->
+  <!--class="container"-->
+  <!--hide-sm=""-->
+  <!--md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"-->
+  <!--md-row-height-gt-md="1:1"-->
+  <!--md-row-height="2:2"-->
+  <!--md-gutter="12px"-->
+  <!--md-gutter-gt-sm="8px" >-->
+
+
+  <!--&lt;!&ndash; Spendable &ndash;&gt;-->
+  <!--<md-grid-tile class="white-bg grid-container"  md-rowspan="2" md-colspan="2" md-colspan-sm="1"-->
+                <!--md-rowspan-sm="0"-->
+                <!--ui-sref="app.spendable">-->
+    <!--<md-grid-tile-header>-->
+      <!--<h3>{{ 'KEY_SPENDABLE' | translate }}</h3>-->
+    <!--</md-grid-tile-header>-->
+    <!--<daily-spendable-dough></daily-spendable-dough>-->
+  <!--</md-grid-tile>-->
+
+
+  <!--&lt;!&ndash; Goal &ndash;&gt;-->
+  <!--<md-grid-tile class="white-bg" md-rowspan="2" md-colspan="2" md-colspan-sm="1"-->
+                <!--ui-sref="app.goal">-->
+    <!--<md-grid-tile-header>-->
+      <!--<h3>{{ 'KEY_GOAL' | translate }}</h3>-->
+    <!--</md-grid-tile-header>-->
+    <!--<md-content flex class="md-padding">-->
+      <!--<goal-dashboard></goal-dashboard>-->
+    <!--</md-content>-->
+  <!--</md-grid-tile>-->
+
+
+  <!--&lt;!&ndash; Overview &ndash;&gt;-->
+  <!--<md-grid-tile class="white-bg"-->
+                <!--md-rowspan="4" md-colspan="2" md-colspan-sm="1">-->
+
+    <!--<md-grid-tile-header>-->
+      <!--<div flex>-->
+        <!--<h3>{{ 'KEY_TRANSACTION' | translate }}</h3>-->
+      <!--</div>-->
+    <!--</md-grid-tile-header>-->
+
+    <!--<div layout="column">-->
+    <!--&lt;!&ndash;Dummy interface&ndash;&gt;-->
+    <!--<div flex="column" ui-sref="app.creditcard">-->
+      <!--<h1 class="text-center">-->
+        <!--<i class="ion-card"></i>-->
+        <!--<br>-->
+        <!--<small class="text-muted">no cards yet</small>-->
+      <!--</h1>-->
+    <!--</div>-->
+
+    <!--<div flex="">-->
+    <!--<md-grid-tile-header>-->
+      <!--<h3>{{ 'KEY_BILL' | translate }}</h3>-->
+    <!--</md-grid-tile-header>-->
+    <!--<h1 class="text-center">-->
+      <!--<i class="ion-ios-list-outline"></i>-->
+      <!--<br>-->
+      <!--<small class="text-muted">no bills yet</small>-->
+    <!--</h1>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div ng-include="dashboardCtrl.addTransaction_view"></div>&ndash;&gt;-->
+  <!--</md-grid-tile>-->
+
+
+  <!--&lt;!&ndash; Spending &ndash;&gt;-->
+  <!--<md-grid-tile class="white-bg"-->
+                <!--md-rowspan="2" md-colspan="4" md-colspan-sm="1"-->
+                <!--ui-sref="app.spending">-->
+    <!--<md-grid-tile-header class="white-bg">-->
+      <!--<h3>{{ 'KEY_SPENDING' | translate }}</h3>-->
+    <!--</md-grid-tile-header>-->
+    <!--<transaction-trend></transaction-trend>-->
+  <!--</md-grid-tile>-->
+
+
+  <!--&lt;!&ndash; Creditcard &ndash;&gt;-->
+  <!--<md-grid-tile class="white-bg"  md-rowspan="2" md-colspan="2" md-colspan-sm="1"-->
+                <!--ui-sref="app.creditcard">-->
+    <!--<md-grid-tile-header>-->
+      <!--<h3>{{ 'KEY_CREDITCARD' | translate }}</h3>-->
+    <!--</md-grid-tile-header>-->
+    <!--<creditcard-dashboard></creditcard-dashboard>-->
+  <!--</md-grid-tile>-->
+
+
+  <!--&lt;!&ndash; Bills &ndash;&gt;-->
+  <!--<md-grid-tile class="white-bg" md-rowspan="2" md-colspan="2" md-colspan-sm="1"-->
+                <!--ui-sref="app.bill">-->
+    <!--<md-grid-tile-header>-->
+      <!--<h3>{{ 'KEY_BILL' | translate }}</h3>-->
+    <!--</md-grid-tile-header>-->
+    <!--<bill-dashboard></bill-dashboard>-->
+  <!--</md-grid-tile>-->
+
+
+  <!--&lt;!&ndash; Setting &ndash;&gt;-->
+  <!--<md-grid-tile class="white-bg" md-rowspan="2" md-colspan="2" md-colspan-sm="1"-->
+                <!--ui-sref="app.profile">-->
+    <!--<md-grid-tile-header>-->
+      <!--<h3>{{ 'KEY_SETTING' | translate }}</h3>-->
+    <!--</md-grid-tile-header>-->
+
+    <!--<h2 class="text-center">-->
+
+      <!--<img-->
+          <!--ng-if="dashboardCtrl.profile.profile_image"-->
+          <!--class="img-responsive"-->
+          <!--style="max-width:200px"-->
+          <!--ng-src="{{dashboardCtrl.profile.profile_image}}" />-->
+
+
+      <!--&lt;!&ndash;<i  nf-if="!dashboardCtrl.profile.profile_image"-->
+          <!--class="material-icons md-48">settings</i>&ndash;&gt;-->
+      <!--<small class="text-muted">{{ 'KEY_SETTING' | translate }}</small>-->
+    <!--</h2>-->
+  <!--</md-grid-tile>-->
+
+<!--</md-grid-list>-->

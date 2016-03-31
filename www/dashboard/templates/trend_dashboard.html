@@ -1,0 +1,16 @@
+<!-- Dashboard Trend -->
+
+<div flex>
+  <h1 class="text-center">
+    <i class="ion-arrow-graph-up-right"></i>
+    <br>
+    <small class="text-muted">{{ 'KEY_NOTRANS' | translate }}</small>
+  </h1>
+
+
+<canvas id="line" class="chart chart-line"
+        chart-data    = "line_dailyData"
+        chart-labels  = "line_dailyLabels"
+        chart-option  =  "line_options">
+</canvas>
+</div>

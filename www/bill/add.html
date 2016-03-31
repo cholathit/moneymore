@@ -1,0 +1,79 @@
+<md-content layout="column">
+
+  <div flex>
+
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">{{ 'KEY_ADDBILL' | translate }}</h1>
+    </md-toolbar>
+
+    <form ng-submit="billCtrl.createBill()">
+
+      <md-content class="md-padding">
+
+        <md-input-container class="flex">
+          <label for="billName">{{ 'KEY_BILL_NAME' | translate }}</label>
+          <input ng-model="billCtrl.billName"
+                 class="ng-pristine ng-valid md-input ng-touched form-control"
+                 id="billName"
+                 autocomplete="off"
+                 ng-required="true"
+                 aria-invalid="false"
+                 style="">
+        </md-input-container>
+
+        <md-input-container class="flex">
+          <label for="billAmount">{{ 'KEY_BILL_AMT' | translate }}</label>
+          <input ng-model="billCtrl.billAmount"
+                 class="ng-pristine ng-valid md-input ng-touched form-control"
+                 id="billAmount"
+                 type="number"
+                 autocomplete="off"
+                 ng-required="true"
+                 aria-invalid="false"
+                 style="">
+        </md-input-container>
+
+
+        <md-input-container flex>
+
+          <label>{{ 'KEY_CATEGORIES'|translate }}</label>
+
+          <md-select ng-model="billCtrl.billCategories">
+            <md-option value="">---Please select---</md-option>
+            <md-option ng-repeat="cate in billCtrl.categories" ng-value="cate">
+              {{ cate.Name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container class="flex">
+          <label for="billNote">{{ 'KEY_NOTE' | translate }}</label>
+          <input ng-model="billCtrl.billNote"
+                 class="ng-pristine ng-valid md-input ng-touched form-control"
+                 id="billNote"
+                 autocomplete="off"
+                 ng-required="false"
+                 aria-invalid="false"
+                 style="">
+        </md-input-container>
+
+        <md-input-container flex>
+
+          <label>{{ 'KEY_BILL_DUE'|translate }}</label>
+
+          <md-select ng-model="billCtrl.billDue">
+            <md-option value="">---Please select---</md-option>
+            <md-option ng-repeat="n in billCtrl.billDueRange()" ng-value="n">
+              {{ n }}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-button class="md-raised md-primary">{{ 'KEY_ADDBILL' | translate }}</md-button>
+
+      </md-content>
+
+    </form>
+
+  </div>
+</md-content>

@@ -1,0 +1,78 @@
+<!--
+Universal template for adding transaction
+-->
+
+<form>
+
+  <div class="btn-group btn-block" data-toggle="buttons">
+            <label class="btn btn-primary-outline" ng-repeat="transType in transactionCtrl.transTypes" 
+            ng-class="{'active':transType.name == transactionCtrl.transactionType.name}"
+            ng-click="transactionCtrl.transactionType = transType" ng-model="transactionCtrl.transactionType" ng-value="transType"
+            >
+                <input type="radio">
+                  {{transType.name}}
+            </label>
+  </div>
+
+  <div class="btn-group btn-block" data-toggle="buttons">
+            <label class="btn btn-primary-outline" ng-repeat="pmtType in transactionCtrl.pmtTypes" 
+            ng-model="transactionCtrl.paymentType"  ng-value="pmtType" ng-click="transactionCtrl.paymentType = pmtType"
+            ng-class="{'active':pmtType.name == transactionCtrl.paymentType.name}">
+                <input type="radio">
+                  {{pmtType.name}}
+            </label>
+  </div>
+
+  <p>
+            <md-select ng-show="transactionCtrl.transactionType.name=='Bill'" ng-model="transactionCtrl.selectedBill"  placeholder="-- Select Bill --">
+                <md-option ng-value="bill" ng-repeat="bill in transactionCtrl.bills">{{bill.name}} {{ bill.category}} {{ bill.amount }}</md-option>
+            </md-select>
+  </p>
+
+   <p>
+            <md-select ng-show="transactionCtrl.paymentType.name=='Credit Card'" ng-model="transactionCtrl.selectedCC"  placeholder="-- Select Credit Card --">
+                <md-option ng-value="cc" ng-repeat="cc in transactionCtrl.creditCards">{{cc.Issuer}} {{ cc.Type}} {{ cc.CardLimit }}</md-option>
+            </md-select>
+  </p>
+
+   <md-input-container md-no-float>
+    <label>{{ 'KEY_AMOUNT'|translate }}</label>
+    <input required name="clientName" ng-model="transactionCtrl.amount">
+  </md-input-container>
+
+  <md-input-container flex>
+
+          <label>{{ 'KEY_CATEGORIES'|translate }}</label>
+
+          <md-select required ng-model="transactionCtrl.category">
+            <md-option value="">---Please select---</md-option>
+            <md-option ng-repeat="cate in transactionCtrl.core_categories" ng-value="cate">
+              {{ cate.name}}
+            </md-option>
+          </md-select>
+  </md-input-container>
+
+  <md-input-container class="flex">
+    <label for="location">{{ 'KEY_LOCATION'|translate }}</label>
+    <input ng-model="transactionCtrl.location"
+           class="ng-pristine ng-valid md-input ng-touched form-control"
+           googleplace=""
+           placeholder="Location"
+           id="location"
+           ng-required="false"
+           aria-invalid="false"
+           style="">
+  </md-input-container>
+
+  <md-input-container class="md-block">
+    <label>{{ 'KEY_NOTE'|translate }}</label>
+    <textarea ng-model="transactionCtrl.note" columns="1" md-maxlength="150" rows="2"></textarea>
+  </md-input-container>
+
+
+  <md-datepicker required ng-model="transactionCtrl.transDate" md-placeholder="{{ 'KEY_TRANSDATE'|translate }}"></md-datepicker>
+
+  <br>
+
+  <md-button class="md-raised md-primary" ng-click="transactionCtrl.addTransaction(); dashboardCtrl.rightNavclose()">{{ 'KEY_ADDTRANS'|translate }}</md-button>
+</form>

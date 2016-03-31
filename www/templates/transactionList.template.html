@@ -1,0 +1,25 @@
+<!-- Transaction List template -->
+
+<md-content>
+
+<!--   <div ng-repeat="(key,val) in transactionCtrl.userTransaction  | orderBy : key : true" class="md-padding">
+  		{{val.$id}}
+	  <div ng-repeat="transaction in val | orderBy : 'createdAt' : true">
+	    {{transaction.category}}
+	    {{transaction.amount | currency}}
+	  </div>
+  </div> -->
+
+  <md-list style="padding:0; width: 100%;" ng-repeat="trans in transactionCtrl.userTransaction  | orderBy : $id : true" >
+	  <md-subheader class="white-font" style="padding:0; width: 100%; background-color: rgb(0,188,212);">
+	  	{{trans.$id | date:'EEE, MMM d, yy'}}
+  	  </md-subheader>
+      <md-list-item ng-repeat="t in trans | toArray ">
+        <!-- <md-icon md-svg-icon="communication:phone" ng-if="$index !== 2" ng-class="{'md-avatar-icon': $index === 1}"></md-icon>
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }"> -->
+          {{t.category}}
+	      {{t.amount | currency}}
+        <!-- </div> -->
+      </md-list-item>
+  </md-list>
+</md-content>

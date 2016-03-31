@@ -1,0 +1,33 @@
+<!-- Dashboard CreditCard -->
+
+<div ng-if="creditcardCtrl.profile.creditcard">
+
+  <md-content flex class="md-padding">
+
+    <div layout="column" md-rowspan="3" md-colspan="2" md-colspan-sm="1"
+         ng-repeat="card in creditcardCtrl.profile.creditcard">
+
+      <div layout="row" class="md-padding" layout-align="start">
+        <div flex>
+          <img src="{{card.issuer.icon}}" width="65px">
+        </div>
+        <div flex>
+          <progress class="progress progress-success" value="25" max="100">25%</progress>
+          <p>100/{{card.card_limit}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-right" ng-if="creditcardCtrl.userCards.length > 2">
+      {{creditcardCtrl.userCards.length - 2 }} {{ 'KEY_MOREGOAL' | translate }}
+    </div>
+
+  </md-content>
+</div>
+
+<div ng-if="!creditcardCtrl.userCards">
+  <h1 class="text-center">
+    <i class="ion-card"></i>
+    <small class="text-muted">{{ 'KEY_NOCARD' | translate }}</small>
+  </h1>
+</div>

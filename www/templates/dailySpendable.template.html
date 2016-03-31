@@ -1,0 +1,34 @@
+<!-- Controller: dashboard -->
+<div style="position: relative;" class="row">
+
+  <div style="width: 100%; height: 10px; position: absolute;
+                top: 50%; left: 0; margin-top: -40px;
+                line-height:19px; text-align: center;
+                z-index: 99">
+    <div class="text-center">
+      <small>
+        <h6>Spendable</h6>
+      </small>
+    </div>
+    <h4>
+      <strong>
+        {{ dashboardCtrl.currentSpendable.spendable | currency:'' }}
+      </strong>
+    </h4>
+
+    <div class="text-center">
+      <small>
+        from
+        {{ dailySpendable | currency:'' }}
+      </small>
+    </div>
+  </div>
+
+  <canvas id="doughnut"
+          class="chart chart-doughnut"
+          chart-data    ="doughData"
+          chart-labels  ="doughLabels"
+          chart-colours ="doughColors"
+          chart-options ="option">
+  </canvas>
+</div>

@@ -1,0 +1,102 @@
+<!-- Travel goal submit -->
+
+<form ng-submit="goalCtrl.travel.submitGoal()">
+
+  <md-content class="md-padding" layout-padding layout="column" layout-sm="column" ng-init="false">
+
+    <md-input-container class="flex">
+      <label for="whereto">Where to?</label>
+      <input ng-model="goalCtrl.travel.whereto"
+             class="ng-pristine ng-valid md-input ng-touched form-control"
+             googleplace=""
+             placeholder="Where to"
+             id="whereto"
+             ng-required="true"
+             aria-invalid="false"
+             style="">
+    </md-input-container>
+
+    <md-input-container class="flex">
+      <label for="amount">Amount</label>
+      <input ng-model="goalCtrl.travel.amount"
+             type="number"
+             ng-keyup="goalCtrl.travel.dailySaving(goalCtrl.travel.targetDate)"
+             class="ng-pristine ng-valid md-input ng-touched form-control"
+             id="amount"
+             ng-required="true"
+             aria-invalid="false"
+             style="">
+    </md-input-container>
+
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Persons</label>
+      <md-select ng-model="goalEdit.persons">
+        <md-option value="">---Please select---</md-option>
+        <md-option ng-repeat="n in goalCtrl.pax" ng-value="n">
+          {{ n }}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-select ng-model="goalEdit.nights">
+      <md-option value="">---Please select---</md-option>
+      <md-option ng-repeat="n in goalCtrl.stay()" ng-value="n">
+        {{ n }}
+      </md-option>
+    </md-select>
+
+    <div
+      flex
+      flow-init
+      flow-name="uploader.flow"
+      flow-files-added="goalCtrl.processFiles($files)">
+      <img class="img-responsive"
+           style="max-width:200px"
+           flow-img="image"
+           />
+      <br/>
+      <img flow-img="$flow.files[0]" class="img-responsive" />
+      <button flow-btn type="file">Upload Images</button>
+    </div>
+
+    <md-content>
+      <md-datepicker ng-model="goalCtrl.travel.targetDate"
+                     md-min-date="goalCtrl.date"
+                     ng-required="true"
+                     ng-change="goalCtrl.travel.dailySaving(goalCtrl.travel.targetDate)"
+                     md-placeholder="Enter date"></md-datepicker>
+    </md-content>
+
+
+
+    <md-button class="md-raised md-primary">Create</md-button>
+    <div ng-if="">
+      To save for your trip you will need to save
+      {{goalCtrl.travel.travelDailySaving | currency: ''}}
+      per day
+
+      <div ng-if="goalCtrl.travel.travelSavingDays > 30">
+        for {{goalCtrl.travel.travelSavingMonths | number: 0}}  months
+      </div>
+      <div ng-if="goalCtrl.travel.travelSavingDays < 30">
+        for {{goalCtrl.travel.travelSavingDays | number: 0}}  days
+      </div>
+
+      Your spendable will change from
+      {{goalCtrl.profile.userPlan.dailySpendable  | currency: ''}}
+      <i class="fa fa-arrow-right"></i>
+      {{goalCtrl.travel.travelSpendableChange  | currency: ''}}
+
+      <p>
+        <md-button class="md-raised md-primary">Create</md-button>
+      </p>
+    </div>
+
+    <div ng-if="goalCtrl.travel.travelSpendableChange < 0">
+      You should not set this goal
+    </div>
+
+  </md-content>
+
+</form>

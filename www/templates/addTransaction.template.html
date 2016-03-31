@@ -1,0 +1,45 @@
+<!--
+Universal template for adding transaction
+-->
+
+<form ng-submit="spendableCtrl.addTransaction()">
+
+
+   <md-input-container md-no-float>
+    <label>Amount</label>
+    <input required name="clientName" ng-model="spendableCtrl.spendableAmount">
+  </md-input-container>
+
+  <md-input-container>
+    <label>Categories</label>
+    <md-select ng-model="spendableCtrl.spendableCategories">
+      <md-option>
+        test
+      </md-option>
+    </md-select>
+  </md-input-container>
+
+  <md-input-container class="flex">
+    <label for="whereto">Where to?</label>
+    <input ng-model="spendableCtrl.spendableWhereto"
+           class="ng-pristine ng-valid md-input ng-touched form-control"
+           googleplace=""
+           placeholder="Where to"
+           id="whereto"
+           ng-required="false"
+           aria-invalid="false"
+           style="">
+  </md-input-container>
+
+  <md-input-container class="md-block">
+    <label>Note</label>
+    <textarea ng-model="spendableCtrl.spendableNote" columns="1" md-maxlength="150" rows="3"></textarea>
+  </md-input-container>
+
+
+  <md-datepicker ng-model="spendableCtrl.spendableDate" md-placeholder="Enter date"></md-datepicker>
+
+  <br>
+
+  <md-button class="md-raised md-primary" ng-click="dashboardCtrl.addTransaction()">Add Transaction</md-button>
+</form>

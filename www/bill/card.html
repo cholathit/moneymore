@@ -1,0 +1,66 @@
+<!--
+  Biil Card
+  Ctrl: BillCtril
+-->
+
+<div ng-if="billCtrl.bills">
+  <md-grid-list
+    md-cols-sm="1"
+    md-cols-md="2"
+    md-rows-sm="1"
+    md-cols-gt-md="6"
+    md-row-height-gt-md="1:1"
+    md-row-height="2:1"
+    md-gutter="12px"
+    md-gutter-gt-sm="8px">
+
+    <md-grid-tile class="white-bg animated zoomIn"
+                  md-rowspan="2"
+                  md-colspan="2"
+                  md-colspan-sm="1"
+                  ng-repeat="bill in billCtrl.bills">
+
+      <md-grid-tile-header>
+        <h3>{{bill.name}} - {{ bill.category }}</h3>
+      </md-grid-tile-header>
+
+      <section class="center">
+
+        <span>Paid</span>
+        <md-button class="md-fab md-mini md-primary">
+        <i class="md-fab material-icons md-24" style="color: greenyellow;">done</i>
+        </md-button>
+
+        <small class="md-caption">{{}}</small>
+        <br>
+        <div class="md-headline">
+          {{bill.amount | currency: '$'}}
+        </div>
+
+        <p>Due {{billCtrl.dueIn(bill.due_on)}} </p>
+        <p>{{ bill.note}}</p>
+      </section>
+
+      <md-grid-tile-footer>
+        <div class="md-actions" layout="row" layout-align="right">
+          <md-button ng-if="billCtrl.thisMonth != bill.last_paid"
+                     flex ng-click="billCtrl.markPaid(bill.$id)">Mark as Paid</md-button>
+          <md-button ng-click="billCtrl.removeBill(bill.$id)">Remove</md-button>
+        </div>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+</div>
+
+<div ng-if="billCtrl.bills==0">
+  <h1 class="text-center">
+    <i class="ion-ios-list-outline"></i>
+    <br>
+    <small class="text-muted">{{ 'KEY_NOBILL' | translate }}</small>
+    <br>
+    <md-button ng-click="dashboardCtrl.toggleRight()"
+               class="md-primary">
+      <i class="ion-plus-round">{{ 'KEY_ADDBILL' | translate }}</i>
+    </md-button>
+  </h1>
+</div>

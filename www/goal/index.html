@@ -1,0 +1,80 @@
+<!--<md-toolbar class="md-primary">-->
+  <!--<div class="md-toolbar-tools container">-->
+    <!--<md-button class="md-fab md-mini md-primary"-->
+               <!--aria-label="Dashboard"-->
+               <!--ui-sref="app.dashboard">-->
+      <!--<i class="ion-ios-arrow-back"></i>-->
+    <!--</md-button>-->
+
+    <!--<h2 class="text-muted white-font">-->
+      <!--<span>Goal</span>-->
+    <!--</h2>-->
+    <!--<md-button ng-click="dashboardCtrl.toggleRight()"-->
+               <!--class="md-primary md-fab md-mini">-->
+      <!--<i class="ion-plus-round"></i>-->
+    <!--</md-button>-->
+  <!--</div>-->
+<!--</md-toolbar>-->
+
+<ion-view view-title="{{ 'KEY_GOAL' | translate }}">
+  <ion-content>
+<div class="container md-padding animated slideInRight">
+
+  <h1>You have {{dashboardCtrl.userGoals.length}} goals </h1>
+
+  <div layout="row" layout-sm="column" layout-wrap layout-align="center start">
+    <div flex="100" flex-gt-md="50" layout="column"
+         ng-repeat="goal in dashboardCtrl.userGoals"
+         ui-sref="app.goalEdit({goalID: goal.$id , goalLocation: goal.destination })">
+      <md-card>
+        {{ goalCtrl.recalProgress(goal)}}
+        <md-card-header>
+          <button class="md-fab md-mini material-icons md-button md-ink-ripple">
+            <span class="ng-scope">flight</span><div class="md-ripple-container"></div></button>
+            <span class="md-headline">{{ goal.destination }}</span>
+        </md-card-header>
+        <img ng-src="{{goal.goal_image}}"
+             class="md-card-image"
+             alt="{{ goal.destination }}">
+
+        <md-card-content>
+          <p>
+            <progress class="progress progress-info" value="50" max="100">50%</progress>
+            <div layout="row">
+              <div flex class="text-center">
+                Saving
+                <h3>
+                  {{goal.saving_ttl | currency: '' }}/{{ goal.budget}}
+                </h3></div>
+              <div flex>{{ goal.targetDate }}</div>
+              <div flex class="text-center">
+                going there in
+                <h3>{{ goalCtrl.diffDays(goal.targetDate) }}</h3>
+              </div>
+            </div>
+          </p>
+        </md-card-content>
+
+        <md-card-actions layout="row" layout-align="start right">
+          <md-button ui-sref="app.goalEdit({goalID: goal.$id , goalLocation: goal.destination })">Edit</md-button>
+          <md-button>Remove</md-button>
+        </md-card-actions>
+
+      </md-card>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Side Nav Add bill -->
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+  <md-content layout-padding>
+    <goal-add></goal-add>
+  </md-content>
+</md-sidenav>
+<!--</md-content>-->
+
+  </ion-content>
+
+</ion-view>

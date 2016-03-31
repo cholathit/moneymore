@@ -1,0 +1,11 @@
+<!-- Add new Goal-->
+
+<h1>Select your goal</h1>
+<md-button class="md-fab md-mini md-primary" ng-repeat="goal in goalCtrl.goals"
+           ng-click="goalCtrl.goalContainer = goal.content"
+           aria-label="{{goal.title}}">
+  <i class="{{goal.icon}}"></i>
+</md-button>
+
+
+<section ng-include="goalCtrl.goalContainer">test</section>

@@ -1,0 +1,59 @@
+<!--
+
+Add new credit card form
+
+-->
+
+<md-content layout-padding layout="column" layout-sm="column">
+
+  <div flex>
+    <form ng-submit="creditcardCtrl.cardAdd()">
+
+      <md-content class="md-padding">
+
+        <md-input-container flex>
+          <label>Issuer</label>
+          <md-select ng-model="creditcardCtrl.card.issuer">
+            <md-option value="">---Please select---</md-option> <!-- not selected / blank option -->
+            <md-option ng-repeat="issuer in creditcardCtrl.cardIssuer" ng-value="issuer">
+              <img src="{{issuser.icon}}" class="img-responsive" />{{ issuer.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container flex>
+          <label>Types</label>
+          <md-select ng-model="creditcardCtrl.card.type">
+            <md-option value="">---Please select---</md-option> <!-- not selected / blank option -->
+            <md-option ng-repeat="types in creditcardCtrl.cardTypes" ng-value="types">
+              {{ types.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container class="flex">
+          <label for="creditlimit">Credit limit</label>
+          <input ng-model="creditcardCtrl.card.card_limit"
+                 class="ng-pristine ng-valid md-input ng-touched form-control"
+                 id="creditlimit"
+                 ng-required="true"
+                 autocomplete="off"
+                 aria-invalid="false"
+                 style="">
+        </md-input-container>
+
+        <md-input-container class="flex">
+          <label for="cadNote">Note</label>
+          <input ng-model="creditcardCtrl.card.note"
+                 class="ng-pristine ng-valid md-input ng-touched form-control"
+                 id="cadNote"
+                 ng-required="false"
+                 autocomplete="off"
+                 aria-invalid="false"
+                 style="">
+        </md-input-container>
+        <md-button class="md-raised md-primary">Add</md-button>
+      </md-content>
+    </form>
+  </div>
+</md-content>

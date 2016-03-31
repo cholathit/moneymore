@@ -1,0 +1,17 @@
+<!-- Dashboard Bill -->
+<ion-view>
+<div ng-if="billCtrl.bills.length == 0">
+<h1 class="text-center">
+  <i class="ion-ios-list-outline"></i>
+  <br>
+  <small class="text-muted">{{ 'KEY_NOBILL' | translate }}</small>
+</h1>
+</div>
+
+<div flex layout-align="center center">
+  <md-button class="md-primary md-fab md-hue-1" aria-label="Paid">
+    <md-icon class="material-icons md-24">done</md-icon>
+  </md-button>
+  <h1>2/5</h1>
+</div>
+</ion-view>

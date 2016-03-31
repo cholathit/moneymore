@@ -1,0 +1,114 @@
+<div class="container-fluid">
+  <div class="container card card_width inner">
+    <div class="page-header" align="center">
+      <h3>
+        <a ui-sref="app.home">
+        <img class="logo-img img-responsive" src="images/logo.gif" /></a></a> Register
+      </h3>
+    </div>
+
+    <div ng-show="authCtrl.error">
+      <span>{{ authCtrl.error.message }}</span>
+    </div>
+
+
+    <form ng-submit="authCtrl.register()" class="container card_padding card_width">
+
+      <md-content layout-padding layout="column" layout-sm="column">
+
+        <div layout layout-sm="column">
+          <md-input-container class="flex">
+            <label for="firstname">First name</label>
+            <input ng-model="authCtrl.user.firstname"
+                   class="ng-pristine ng-valid md-input ng-touched form-control"
+                   id="firstname"
+                   ng-required="true"
+                   aria-invalid="false"
+                   style="">
+          </md-input-container>
+
+          <md-input-container class="flex">
+            <label for="lastname">Last name</label>
+            <input ng-model="authCtrl.user.lastname"
+                   class="ng-pristine ng-valid md-input ng-touched form-control"
+                   id="lastname"
+                   ng-required="true"
+                   aria-invalid="false"
+                   style="">
+          </md-input-container>
+        </div>
+
+        <div layout="column" layout-sm="column">
+          <md-input-container class="md-block">
+            <label for="email">Email</label>
+            <input ng-model="authCtrl.user.email"
+                   class="ng-pristine ng-valid md-input ng-touched form-control"
+                   id="email"
+                   ng-required="true"
+                   aria-invalid="false"
+                   style="">
+          </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+          <md-input-container class="flex">
+            <label for="password">Password</label>
+            <input ng-model="authCtrl.user.password"
+                   type="password"
+                   class="ng-pristine ng-valid md-input ng-touched form-control"
+                   id="password"
+                   ng-required="true"
+                   aria-invalid="false"
+                   style="">
+          </md-input-container>
+        </div>
+
+        <md-radio-group ng-model="authCtrl.user.gender" layout="row">
+          <md-radio-button value="Male"  class="md-primary">Male</md-radio-button>
+          <md-radio-button value="Female" class="md-primary"> Female </md-radio-button>
+        </md-radio-group>
+
+        <div layout layout-sm="column">
+            <label>Birhday</label>
+            <md-input-container flex>
+              <label>Day</label>
+              <md-select ng-model="authCtrl.user.b_day" ng-required="true">
+                <md-option ng-repeat="d in authCtrl.days" value="{{d}}">
+                  {{ d }}
+                </md-option>
+              </md-select>
+            </md-input-container>
+
+            <md-input-container flex>
+              <label>Month</label>
+              <md-select ng-model="authCtrl.user.b_month" ng-required="true">
+                <md-option ng-repeat="m in authCtrl.months" value="{{m.month}}">
+                  {{m.month}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+
+            <md-input-container flex>
+              <label>Years</label>
+              <md-select ng-model="authCtrl.user.b_year" ng-required="true">
+                <md-option ng-repeat="y in authCtrl.years" value="{{y}}">
+                  {{y}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+        </div>
+
+        <a ng-click="authCtrl.registerFB()">Facebook</a>
+
+        <md-button class="md-raised md-primary">Register</md-button>
+
+      </md-content>
+    </form>
+
+    <md-button ui-sref="app.home" class="ion-ios-arrow-back"> Home </md-button>
+    <div class="pull-right">
+    <md-button ui-sref="app.login" class="ion-ios-arrow-back"> Login </md-button>
+    </div>
+
+  </div>
+</div>

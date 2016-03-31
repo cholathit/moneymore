@@ -1,0 +1,82 @@
+<!--<md-toolbar class="md-primary">-->
+  <!--<div class="md-toolbar-tools container">-->
+    <!--<md-button class="md-fab md-mini md-primary"-->
+               <!--aria-label="Dashboard"-->
+               <!--ui-sref="app.dashboard">-->
+      <!--<i class="ion-ios-arrow-back"></i>-->
+    <!--</md-button>-->
+
+    <!--<h2 class="text-muted white-font">-->
+      <!--<span>Spending</span>-->
+    <!--</h2>-->
+    <!--<md-button ng-click="dashboardCtrl.toggleRight()"-->
+               <!--class="md-primary md-fab md-mini">-->
+      <!--<i class="ion-plus-round"></i>-->
+    <!--</md-button>-->
+  <!--</div>-->
+<!--</md-toolbar>-->
+
+
+<!-- <section class="animated slideInRight" style="position: relative;height: 100%;">
+  <md-content flex layout-padding layout="row">
+    <div layout="column" flex="70">
+      <div flex>
+        <h3 class="md-title">Transaction</h3>
+        <br>
+        Daily Avg: 200, Nov 6- Dec 7
+      </div>
+      <transaction-trend></transaction-trend>
+    </div>
+
+    <div flex>
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">This week</h1>
+      </md-toolbar>
+      <transaction-list></transaction-list>
+    </div>
+
+
+  </md-content>
+
+
+</section> -->
+<ion-view view-title="{{ 'KEY_SPENDING' | translate }}">
+  <ion-content>
+    <section class="animated slideInRight" layout="row" layout-sm="column">
+      <div flex class="md-padding">
+        <h2>Transactions  <br> <small>Daily Avg: 200, Nov 6- Dec 7</small>
+          <md-button ng-click="dashboardCtrl.toggleRight()"
+                     class="md-primary">
+            <i class="ion-plus-round">{{ 'KEY_ADDTRANS' | translate }}</i>
+          </md-button>
+        </h2>
+        <transaction-trend></transaction-trend>
+      </div>
+
+      <div flex-auto>
+
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools white-font">Recent Transactions</h1>
+        </md-toolbar>
+        <transaction-list></transaction-list>
+      </div>
+    </section>
+
+
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <!--<md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Transction</h1>
+      </md-toolbar>-->
+      <md-content layout-padding>
+        <transaction-add></transaction-add>
+        <!--<md-button ng-click="dashboardCtrl.rightNavclose()" class="md-primary">
+          Close Sidenav Right
+        </md-button>-->
+      </md-content>
+    </md-sidenav>
+
+  </ion-content>
+</ion-view>
+

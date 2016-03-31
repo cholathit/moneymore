@@ -1,0 +1,54 @@
+<div  class="page-wrapper text-muted" ng-cloak>
+  <!-- Money quote -->
+  &quot;{{ authCtrl.randQuote.Quote }}&quot; - {{ authCtrl.randQuote.Author }}
+</div>
+
+<div class="page-wrapper card card_padding inner card_width">
+
+  <div class="page-header" align="center">
+    <h5>
+      <a ui-sref="app.home">
+      <img class="logo-img img-responsive" src="images/logo.gif" /></a>
+      Log In
+    </h5>
+  </div>
+
+  <div ng-show="authCtrl.error">
+    <span>{{ authCtrl.error.message }}</span>
+  </div>
+
+  <form ng-submit="authCtrl.login()" style="max-width:400px" class="inner">
+
+    <md-content layout-padding layout="column" layout-sm="column">
+
+      <div layout="column">
+        <md-input-container class="flex">
+          <label for="email">Email</label>
+          <input ng-model="authCtrl.user.email"
+                 class="ng-pristine ng-valid md-input ng-touched form-control"
+                 id="email"
+                 aria-invalid="false"
+                 style="">
+        </md-input-container>
+
+        <md-input-container md-no-float  class="flex">
+          <label for="password">Password</label>
+          <input ng-model="authCtrl.user.password"
+                 type="password"
+                 class="ng-pristine ng-valid md-input ng-touched form-control"
+                 id="password"
+                 aria-invalid="false"
+                 style="">
+        </md-input-container>
+      </div>
+    </md-content>
+
+    <a ng-click="authCtrl.registerFB()">Facebook</a>
+
+    <md-button class="md-raised md-primary">Login</md-button>
+  </form>
+  <md-button ui-sref="app.home" class="ion-ios-arrow-back"> Home </md-button>
+  <div class="pull-right">
+    <md-button ui-sref="app.register" class="ion-ios-arrow-back"> Register </md-button>
+  </div>
+</div>

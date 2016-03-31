@@ -1,0 +1,55 @@
+<!--<md-toolbar class="md-primary">-->
+  <!--<div class="md-toolbar-tools container">-->
+    <!--<md-button class=""-->
+               <!--aria-label="Dashboard"-->
+               <!--ui-sref="app.dashboard">-->
+      <!--<i class="ion-ios-arrow-back"></i>-->
+    <!--</md-button>-->
+    <!--back-->
+
+    <!--<h2 class="text-muted white-font">-->
+      <!--<span>Spendable</span>-->
+    <!--</h2>-->
+    <!--<md-button ng-click="dashboardCtrl.toggleRight()"-->
+               <!--class="md-primary md-fab md-mini">-->
+      <!--<i class="ion-plus-round"></i>-->
+    <!--</md-button>-->
+  <!--</div>-->
+<!--</md-toolbar>-->
+
+<!--{{spendableCtrl.user}}-->
+
+<ion-view view-title="{{ 'KEY_SPENDABLE' | translate }}">
+  <ion-content class="has-header">
+
+    <!--<section class="container md-padding animated slideInRight ">-->
+      <md-content flex layout="row" layout-sm="column" class="wrapper">
+
+        <div flex class="md-padding">
+          <p class="md-title text-center">Today</p>
+          <daily-spendable-dough></daily-spendable-dough>
+          <transaction-trend></transaction-trend>
+        </div>
+
+        <div>
+          <md-toolbar class="md-theme-indigo" layout="row">
+            <div flex>
+              <h1 class="md-toolbar-tools">This week</h1>
+            </div>
+          </md-toolbar>
+        </div>
+      </md-content>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools white-font">Transction</h1>
+      </md-toolbar>
+      <md-content layout-padding>
+        <div ui-view="addTransaction">
+          <transaction-add></transaction-add>
+        </div>
+      </md-content>
+    </md-sidenav>
+
+  </ion-content>
+</ion-view>

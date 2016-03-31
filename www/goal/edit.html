@@ -1,0 +1,26 @@
+<md-toolbar class="md-primary">
+  <div class="md-toolbar-tools container">
+    <md-button class="md-fab md-mini md-primary"
+               aria-label="Goal"
+               ui-sref="app.goal">
+      <i class="ion-ios-arrow-back"></i>
+    </md-button>
+
+    <h2 class="text-muted white-font">
+      <span>Goal Edit</span>
+    </h2>
+    <md-button ng-click="dashboardCtrl.toggleRight()"
+               class="md-primary md-fab md-mini">
+      <i class="ion-plus-round"></i>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<div class="container md-padding animated slideInRight" ng-controller="GoalCtrl as goalCtrl">
+
+  <h1>Edit</h1>
+
+  <div ui-view="body"></div>
+
+  </md-content>
+</div>

@@ -1,0 +1,89 @@
+<md-content layout="row">
+
+  <div flex>
+    <img ng-src="{{ goalEdit.goal_edit.goal_image }}"
+         class="md-card-image img-responsive"
+         alt="Goal Image">
+    <div
+      flex
+      flow-init
+      flow-name="uploader.flow"
+      flow-files-added="goalEdit.processFiles($files,goalEdit.goal_edit.$id)">
+      <md-button class="md-primary" flow-btn type="file">Upload Images</md-botton>
+    </div>
+  </div>
+
+  <div flex="50" class="md-padding">
+
+    <form ng-submit="goalEdit.travel.updateGoal(goal.$id)">
+
+      <h5 class="md-title">{{goalEdit.goal_edit.destination}}</h5>
+
+      <div layout="row">
+        <label class="text-center" ng-model="goalEdit.travel.travelDailySaving" flex>
+          Daily Saving <br>
+          {{goalEdit.dailySaving | currency: '' }}
+        </label>
+        <label class="text-center" ng-model="goalEdit.travel.travelDailySaving" flex>
+          Target Date <br>
+          {{goalEdit.targetDate | date:"MM/dd/yyyy" }}</label>
+        <label class="text-center" ng-model="goalEdit.travel.travelDailySaving" flex>
+          Duration <br>
+          {{goalEdit.duration_day | currency: ''}}</label>
+      </div>
+
+      <progress class="progress progress-info" value="50" max="100">50%</progress>
+
+      <md-input-container class="flex">
+        <label for="amount">Amount</label>
+        <input ng-model="goalEdit.amount"
+               ng-keyup="goalEdit.reCal()"
+               ng-init="goalEdit.amount = goalEdit.goal_edit.budget"
+               type="number"
+               class="ng-pristine ng-valid md-input ng-touched form-control"
+               id="amount"
+               ng-required="true"
+               aria-invalid="false"
+               placeholder="goalEdit.goal_edit.budget"
+               ng-value="goalEdit.goal_edit.budget"
+               style="">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Persons</label>
+        <md-select ng-model="goalEdit.persons">
+          <md-option value="">---Please select---</md-option>
+          <md-option ng-repeat="n in goalEdit.pax" ng-value="n">
+            {{ n }}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-select ng-model="goalEdit.nights">
+        <md-option value="">---Please select---</md-option>
+        <md-option ng-repeat="n in goalEdit.stay()" ng-value="n">
+          {{ n }}
+        </md-option>
+      </md-select>
+
+      <md-content>
+        <md-datepicker ng-model="goalEdit.targetDate"
+                       ng-required="true"
+                       ng-change="goalEdit.reCal()"
+                       ></md-datepicker>
+      </md-content>
+
+
+
+      <label>{{goal.dailySaving}}</label>
+
+      <p>
+        <md-button class="md-raised md-primary"
+                   ng-click="goalEdit.updateGoal(goalEdit.goal_edit.$id)">Update</md-button>
+      </p>
+
+
+    </form>
+  </div>
+
+</md-content>

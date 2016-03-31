@@ -1,0 +1,58 @@
+<div layout="row" ng-controller="ProfileCtrl as profileCtrl">
+  <div flex="70" flex-sm="100">
+    <user-plan-spendable></user-plan-spendable>
+    You can spend
+    {{ profileCtrl.spendable()/30 | currency: '' }}
+  </div>
+
+  <div flex>
+    <md-select ng-model="profileCtrl.currencySelected" value="list.currency" aria-label="Currency Select">
+      <md-option value="">---Please select---</md-option>
+      <md-option ng-repeat="list in profileCtrl.currency">{{ list.currency}}</md-option>
+    </md-select>
+
+    <form ng-submit="profileCtrl.createUserplan()">
+
+      <md-input-container class="flex">
+        <label for="income">Income</label>
+        <input ng-model="profileCtrl.income"
+               ng-keyup="profileCtrl.updateChart()"
+               class="ng-pristine ng-valid md-input ng-touched form-control"
+               id="income"
+               aria-invalid="false"
+               placeholder="{{profileCtrl.profile.userPlan.income}}"
+               style="">
+      </md-input-container>
+
+      <md-input-container class="flex">
+        <label for="saving">Saving</label>
+        <input ng-model="profileCtrl.saving"
+               ng-keyup="profileCtrl.updateChart()"
+               class="ng-pristine ng-valid md-input ng-touched form-control"
+               id="saving"
+               aria-invalid="false"
+               style="">
+      </md-input-container>
+
+      <md-input-container class="flex">
+        <label for="bill">Bill</label>
+        <md-button ng-click="dashboardCtrl.toggleRight()"
+                   class="md-primary">
+          <i class="ion-plus-round">Add Bill</i>
+        </md-button>
+        <input ng-model="profileCtrl.bill"
+               ng-keyup="profileCtrl.updateChart()"
+               class="ng-pristine ng-valid md-input ng-touched form-control"
+               id="bill"
+               aria-invalid="false"
+               style="">
+      </md-input-container>
+
+      <md-button class="md-raised md-primary">Save</md-button>
+
+    </form>
+
+  </div>
+
+
+</div>

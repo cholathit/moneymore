@@ -1,0 +1,93 @@
+<!--<md-toolbar class="md-primary">-->
+  <!--<div class="md-toolbar-tools container">-->
+    <!--<md-button class="md-fab md-mini md-primary"-->
+               <!--aria-label="Dashboard"-->
+               <!--ui-sref="app.dashboard">-->
+      <!--<i class="ion-ios-arrow-back"></i>-->
+    <!--</md-button>-->
+
+    <!--<h2 class="text-muted white-font">-->
+      <!--<span>Credit card</span>-->
+    <!--</h2>-->
+    <!--<md-button-->
+      <!--aria-label="Menu"-->
+      <!--ng-click="dashboardCtrl.toggleRight()"-->
+      <!--class="md-primary md-fab md-mini">-->
+      <!--<i class="ion-plus-round"></i>-->
+    <!--</md-button>-->
+  <!--</div>-->
+<!--</md-toolbar>-->
+
+<ion-view view-title="{{ 'KEY_CREDITCARD' | translate }}">
+  <ion-content>
+    <div class="container md-padding animated slideInRight" ng-controller="CreditcardCtrl as creditcardCtrl">
+      <!--{{creditcardCtrl.profile}}-->
+      <!--{{dashboardCtrl.profile.creditcard}}-->
+      <div ng-if="!creditcardCtrl.profile.creditcard">nothing here</div>
+
+      <div ng-if="creditcardCtrl.profile.creditcard">
+
+        <md-grid-list
+          md-cols-sm="1"
+          md-cols-md="2"
+          md-rows-sm="1"
+          md-cols-gt-md="6"
+          md-row-height-gt-md="1:1"
+          md-row-height="2:1"
+          md-gutter="12px"
+          md-gutter-gt-sm="8px">
+
+          <md-grid-tile class="white-bg animated zoomIn"
+                        md-rowspan="2"
+                        md-colspan="2"
+                        md-colspan-sm="1"
+                        ng-repeat="card in creditcardCtrl.profile.creditcard"
+          >
+            <md-grid-tile-header>
+
+              <h3>{{ card.issuer.name }}</h3>
+            </md-grid-tile-header>
+
+            <md-grid-list class="text-center">
+
+              <img src="{{card.issuer.icon}}" class="img-responsive" width="80px">
+              <canvas
+                class="chart chart-doughnut"
+                chart-data= "[tet,test]"
+                chart-labels="[300, 500, 100]" >
+              </canvas>
+              <br>
+              <i class="{{card.type.icon}}"></i>
+            </md-grid-list>
+
+            <md-grid-tile-footer>
+
+              <div class="md-actions" layout="row" layout-align="right">
+                <md-button class="md-primary md-raised"
+                           ng-click="showConfirm($event)"
+                           flex="100"
+                           flex-gt-md="auto">
+                  Confirm Dialog
+                </md-button>
+              </div>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+
+        </md-grid-list>
+
+      </div>
+
+    </div>
+
+
+    <!-- Side Nav Add bill -->
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <md-content layout-padding>
+        <creditcard-add></creditcard-add>
+      </md-content>
+    </md-sidenav>
+    <!--</md-content>-->
+
+  </ion-content>
+</ion-view>
+

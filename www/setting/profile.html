@@ -1,0 +1,31 @@
+
+<div layout="row" ng-controller="ProfileCtrl as profileCtrl">
+
+
+  <div
+       flex
+       flow-init
+       flow-name="uploader.flow"
+       flow-files-added="profileCtrl.processFiles($files)">
+    <img class="img-responsive"
+         style="max-width:200px"
+         flow-img="image" ng-src="{{profileCtrl.profile.profile_image}}" />
+    <br/>
+    <button flow-btn type="file">Upload Images</button>
+  </div>
+
+
+  <div flex>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>First name</label>
+      <input ng-model="profileCtrl.profile.firstname">
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>First name</label>
+      <input ng-model="profileCtrl.profile.lastname">
+    </md-input-container>
+
+    <md-button class="md-raised md-primary">Save</md-button>
+  </div>
+</div>

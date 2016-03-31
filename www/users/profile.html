@@ -1,0 +1,51 @@
+<md-toolbar class="md-primary">
+  <div class="md-toolbar-tools container">
+    <md-button class="md-fab md-mini md-primary"
+               aria-label="Dashboard"
+               ui-sref="app.dashboard">
+      <i class="ion-ios-arrow-back"></i>
+    </md-button>
+
+    <h2 class="text-muted white-font">
+      <span>Profile</span>
+    </h2>
+
+  </div>
+</md-toolbar>
+
+
+<section class="animated slideInRight" style="position: relative;height: 100%;">
+
+  <md-content class="md-padding">
+    <div class="container">
+
+      <md-tabs md-dynamic-height md-border-bottom>
+
+        <md-tab label="Spendable">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Spendable</h1>
+            <div ng-include="'setting/userPlan.html'"></div>
+          </md-content>
+        </md-tab>
+
+        <md-tab label="Profile">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Profile</h1>
+            <div ng-include="'setting/profile.html'"></div>
+          </md-content>
+        </md-tab>
+
+      </md-tabs>
+
+    </div>
+  </md-content>
+
+  <!-- Side Nav Add bill -->
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-content layout-padding>
+      <bill-add></bill-add>
+    </md-content>
+  </md-sidenav>
+  </md-content>
+
+</section>

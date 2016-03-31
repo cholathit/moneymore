@@ -1,0 +1,110 @@
+{{dashboardCtrl.profile}}
+step1: {{ step1}}
+step2: {{ step2}}
+
+>>> {{ profileCtrl.doughData }}
+
+
+
+
+<!-- Step 1 -->
+<div class="page-wrapper card card_padding inner card_width" ng-show="step1" ng-init="step1 = true">
+  <h1>Welcome {{ profileCtrl.profile.firstname }}</h1>
+  <div ng-if="profileCtrl.profile.profile_image">
+    <img ng-src="{{profileCtrl.profile.profile_image}}">
+  </div>
+
+  <div ng-if="!profileCtrl.profile.profile_image">
+    <i class="material-icons md-24"></i>
+  </div>
+
+
+  <div flow-init="{ target: '/upload',
+                    testChunks:false,
+                    query: 'test',
+                    permanentErrors: [415, 500, 501]
+                   }"
+       flow-files-submitted="$flow.upload()"
+       flow-file-success="$file.msg = $message"
+
+       flow-prevent-drop>
+
+
+    <md-button class="md-primary" flow-btn>
+      <span><i class="icon icon-file"></i>Upload File</span>
+    </md-button>
+
+    <img flow-img="$flow.files[0]" />
+  </div>
+
+  <div layout="row" layout-sm="column">
+    <md-input-container flex>
+      <label for="firstname">First name</label>
+      <input ng-model="profileCtrl.firstname"
+             class="ng-pristine ng-valid md-input ng-touched form-control"
+             id="firstname"
+             aria-invalid="false"
+             placeholder="{{profileCtrl.profile.firstname}}"
+             style="">
+    </md-input-container>
+
+    <md-input-container flex>
+      <label for="lastname">Last name</label>
+      <input ng-model="profileCtrl.lastname"
+             class="ng-pristine ng-valid md-input ng-touched form-control"
+             id="lastname"
+             aria-invalid="false"
+             placeholder="{{profileCtrl.profile.lastname}}"
+             style="">
+    </md-input-container>
+  </div>
+
+  <md-button ng-click="profileCtrl.updateProfile();
+                        step3=true;
+                        step2=false;
+                        step1=false">Next</md-button>
+</div>
+
+
+<!-- Step 2 -->
+<div class="page-wrapper card card_padding inner card_width"
+     ng-show="step2"
+     ng-init="step2=false">
+
+  <h1>Step1</h1>
+
+  What do you do?
+
+  <md-input-container class="md-block">
+    <label>Jobs</label>
+    <md-select ng-model="profileCtrl.jobSelected">
+      <md-option value="">---Please select---</md-option>
+      <md-option ng-repeat="job in dashboardCtrl.jobs" value="{{job.name}}">
+        {{ job.name }}
+      </md-option>
+    </md-select>
+  </md-input-container>
+
+
+  <md-button
+    ng-click="profileCtrl.saveJob();
+                step2=true;
+                step1=false">next</md-button>
+
+</div>
+
+
+
+
+<!-- Step 3 -->
+<div class="page-wrapper card card_padding inner card_width" ng-show="step3" ng-init="step3 = false">
+
+  <md-button ng-click="step1=true;step2=false">
+    back
+  </md-button>
+
+  <h1>
+    Step2
+  </h1>
+  <spendable-setting></spendable-setting>
+</div>
